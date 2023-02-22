@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="icon" href="./images/logo.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <script src="./js/questions.json" ></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <script src="https://kit.fontawesome.com/7b50401569.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <main>
+            <video width="100%" height="100%" autoplay id="video">
+                <source src="./video/CM_Project_AdobeExpress-2.mp4" type="video/mp4">
+            </video>
+            <video width="100%" height="100%" id="videoEnd">
+                <source src="./video/cm Project end .mp4" type="video/mp4">
+            </video>
+            <!-- décor as background image -->
+            <div id="logo"></div>
+            <div id="eyeIcon"><i class="fas fa-eye-slash"></i></div>
+            <div id="level"></div>
+            <div id="reputation" style="background:linear-gradient(35deg, rgb(17, 201, 0) 0%, rgb(126, 0, 0) 0%);"></div>
+            <div id="reputationText"></div>
+            <div id="profile">
+                <div id="profilePicture"></div>
+                <div id="profileName">Name</div>
+                <div id="profileContract">Contract</div>
+            </div>
+            <div id="questions">
+                <div id="presentator"></div>
+                <div id="presentatorName">Mr Ferreira :</div>
+                <div id="question"><p id="questionText"></p></div>
+                <div id="answers">
+                    <div class="answer"><p id="choice1"></p><div id="circle1"></div></div>
+                    <div class="answer"><p id="choice2"></p><div id="circle2"></div></div>
+                    <div class="answer"><p id="choice3"></p><div id="circle3"></div></div>
+                    <div class="answer"><p id="choice4"></p><div id="circle4"></div></div>
+                </div>
+            </div>
+            <div id="table"></div>
+            <div id="phone"></div>
+            <div id="computer"></div>
+            <div id="chair"></div>
+            <div id="plant"></div>
+            <div id="certificate" style="position: absolute;perspective: 500px;-webkit-perspective: 500px">
+                <img src='../images/certificate2.png' alt="" />
+            </div>
+            <section class="container">
+                <div id="caroussel">
+                  <figure id="avatar1"></figure>
+                  <figure id="avatar2"></figure>
+                  <figure id="avatar3"></figure>
+                  <figure id="avatar4"></figure>
+                  <figure id="avatar5"></figure>
+                  <figure id="avatar6"></figure>
+                  <figure id="avatar7"></figure>
+                  <figure id="avatar8"></figure>
+                  <figure id="avatar9"></figure>
+                  <figure id="avatar10"></figure>
+                </div>
+                <input type="text" placeholder="Pseudo" id="usernameSelect">
+                <img id="selectAvatar" src="./images/button.png">
+              </section>
+              <!--
+            <div id="avatarSelection">
+                <h1>Choisissez un pseudo et un avatar :</h1>
+                <input type="text" placeholder="Pseudo" id="username">
+                <img src="./images/avatar1.png" class="avatar">
+                <img src="./images/avatar2.png" class="avatar">
+                <img src="./images/avatar3.png" class="avatar">
+                <img src="./images/avatar4.png" class="avatar">
+                <img src="./images/avatar5.png" class="avatar">
+                <img src="./images/avatar6.png" class="avatar">
+                <img src="./images/avatar7.png" class="avatar">
+                <img src="./images/avatar8.png" class="avatar">
+                <img src="./images/avatar9.png" class="avatar">
+                <img src="./images/avatar10.png" class="avatar">
+            </div>
+            -->
+            <div id="fakePlant"></div>
+            <div id="fakePlant2"></div>
+            <div id="bigPainting"></div>
+            <div id="paintingSet"></div>
+            <div id="statue"></div>
+            <div id="vases"></div>
+            <div id="levelUpWindow"></div>
+        </main>
+        <img src="./images/replayButton.png" id="replayButton">
+    </body>
+    <script src="js/scripts.js"></script> 
+</html>
