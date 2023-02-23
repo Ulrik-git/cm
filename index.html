@@ -25,17 +25,21 @@
             <div id="profile">
                 <div id="profilePicture"></div>
                 <div id="profileName">Name</div>
-                <div id="profileContract">Contract</div>
+                <div id="profileContract">Futur expert SEO</div>
             </div>
-            <div id="questions">
+            <div id="questions" style="display:block">
                 <div id="presentator"></div>
                 <div id="presentatorName">Mr Ferreira :</div>
                 <div id="question"><p id="questionText"></p></div>
                 <div id="answers">
-                    <div class="answer"><p id="choice1"></p><div id="circle1"></div></div>
-                    <div class="answer"><p id="choice2"></p><div id="circle2"></div></div>
-                    <div class="answer"><p id="choice3"></p><div id="circle3"></div></div>
-                    <div class="answer"><p id="choice4"></p><div id="circle4"></div></div>
+                    <div class="answer"><p id="choice1"></p></div>
+                    <div class="answer"><p id="choice2"></p></div>
+                    <div class="answer"><p id="choice3"></p></div>
+                    <div class="answer"><p id="choice4"></p></div>
+                    <div id="circle1"></div>
+                    <div id="circle2"></div>
+                    <div id="circle3"></div>
+                    <div id="circle4"></div>
                 </div>
             </div>
             <div id="table"></div>
@@ -85,6 +89,36 @@
             <div id="statue"></div>
             <div id="vases"></div>
             <div id="levelUpWindow"></div>
+            <div id="catalogueButton"><i class="fas fa-book"></i></div>
+            <div id="catalogue" style="display: none">
+                <div id="categories">
+                    <div id="categoryAll" class="category">All</div>
+                    <div id="categoryPhone" class="category">Phone</div>
+                    <div id="categoryComputer" class="category">Computer</div>
+                    <div id="categoryTable" class="category">Tables</div>
+                    <div id="categoryChair" class="category">Chairs</div>
+                    <div id="categoryDecorations" class="category">Decorations</div>
+                </div>
+                <div id="selectPhone1" class="catalogueItem phone"></div>
+                <div id="selectPhone2" class="catalogueItem phone"></div>
+                <div id="selectPhone3" class="catalogueItem phone"></div>
+                <div id="selectPhone4" class="catalogueItem phone"></div>
+                <div id="selectComputer1" class="catalogueItem computer"></div>
+                <div id="selectComputer2" class="catalogueItem computer"></div>
+                <div id="selectComputer3" class="catalogueItem computer"></div>
+                <div id="selectComputer4" class="catalogueItem computer"></div>
+                <div id="selectTable1" class="catalogueItem table"></div>
+                <div id="selectTable2" class="catalogueItem table"></div>
+                <div id="selectChair1" class="catalogueItem chair"></div>
+                <div id="selectDecoration1" class="catalogueItem decoration"></div>
+                <div id="selectDecoration2" class="catalogueItem decoration"></div>
+                <div id="selectDecoration3" class="catalogueItem decoration"></div>
+                <div id="selectDecoration4" class="catalogueItem decoration"></div>
+                <div id="selectDecoration5" class="catalogueItem decoration"></div>
+                <div id="selectDecoration6" class="catalogueItem decoration"></div>
+            </div>
+            <div id="cheatButtonLevel" onclick="levelUp()">+1lvl</div>
+            <div id="cheatButtonReputation" onclick="addReputation()">+20rep</div>
         </main>
         <img src="./images/replayButton.png" id="replayButton">
     </body>

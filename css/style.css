@@ -164,6 +164,7 @@ body {
     bottom: 50%;
     width: 130px;
     transform: rotateY(-30deg);
+    display: none;
 }
 
 #certificate img {
@@ -244,7 +245,7 @@ body {
 }
 
 .answer:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .answer p {
@@ -253,34 +254,28 @@ body {
     color: white;
 }
 
-#circle1, #circle3 {
+#circle1, #circle2, #circle3, #circle4 {
     width: 30px;
     height: 30px;
     border-radius: 20px;
     background-color: #FA00FF;
     z-index: 40;
     content: " ";
+    left: 23.8%;
     position: fixed;
-    margin-top: -2%;
-    margin-left: -20px;
     box-shadow:0 0 50px rgba(250,0,255,100),0 0 150px rgba(250,0,255,100);
 }
 
-#circle3 {
-    margin-top: -4%;
+#circle1, #circle2 {
+    top: 67.5%;
 }
 
-.answer:nth-child(2)::after, .answer:nth-child(4)::after {
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-    background-color: #FA00FF;
-    z-index: 40;
-    content: " ";
-    position: absolute;
-    margin-top: -3%;
-    margin-left: 430px;
-    box-shadow:0 0 50px rgba(250,0,255,100),0 0 150px rgba(250,0,255,100);
+#circle3, #circle4 {
+    top: 80.5%;
+}
+
+#circle2, #circle4 {
+    left: 79.2%;
 }
 
 .container {
@@ -539,4 +534,167 @@ body {
     left: 30%;
     cursor: pointer;
     display: none;
+}
+
+#catalogueButton {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #00A99D;
+    left: 83%;
+    top: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-radius: 20px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+#catalogueButton:hover {
+    transform: scale(1.1);
+}
+
+#catalogue {
+    position: absolute;
+    width: 60%;
+    height: 80%;
+    border-radius: 15px;
+    background-color: #00A99D;
+    z-index: 90;
+    left: 20%;
+    bottom: 10%;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding-top: 30px;
+    overflow: scroll;
+    display: none;
+}
+
+.catalogueItem {
+    width: 30%;
+    height: 40%;
+    background-color: grey;
+    border: 2px solid black;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    cursor: pointer;
+    filter: blur(20px);
+}
+
+#selectPhone1 {
+    background-image: url('../images/nokia-3310-noir.jpeg');
+}
+
+#selectPhone2 {
+    background-image: url('../images/s-l500.png');
+}
+
+#selectPhone3 {
+    background-image: url('../images/apple_iph7.png');
+}
+
+#selectPhone4 {
+    background-image: url('../images/iPhone14ProMax.png');
+}
+
+#selectComputer1 {
+    background-image: url('../images/pc_lvl0.png');
+}
+
+#selectComputer2 {
+    background-image: url('../images/pc_lvl1.png');
+}
+
+#selectComputer3 {
+    background-image: url('../images/pc_lvl2.png');
+}
+
+#selectComputer4 {
+    background-image: url('../images/pc_lvl3.png');
+}
+
+#selectTable1 {
+    background-image: url('../images/table_bois.png');
+}
+
+#selectTable2 {
+    background-image: url('../images/modern_table.png');
+}
+
+#selectChair1 {
+    background-image: url('../images/chaise.png');
+}
+
+#selectDecoration1 {
+    background-image: url('../images/fakePlant.png');
+}
+
+#selectDecoration2 {
+    background-image: url('../images/fakePlant2.png');
+}
+
+#selectDecoration3 {
+    background-image: url('../images/bigPainting.png');
+}
+
+#selectDecoration4 {
+    background-image: url('../images/paintingSet.png');
+}
+
+#selectDecoration5 {
+    background-image: url('../images/statue.png');
+}
+
+#selectDecoration6 {
+    background-image: url('../images/vases.png');
+}
+
+.catalogueItem:hover {
+    transform: scale(1.05);
+}
+
+#table {
+    display: flex;
+}
+
+#categories {
+    display: flex;
+    position: absolute;
+}
+
+.category {
+    width: fit-content;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-top: -30px;
+}
+
+#cheatButtonLevel, #cheatButtonReputation {
+    position: absolute;
+    left: 2%;
+    top: 25%;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    display: none;
+}
+
+#cheatButtonLevel {
+    background-color: #00A99D;
+}
+
+#cheatButtonReputation {
+    top: 35%;
+    background-color: #FA00FF;
 }

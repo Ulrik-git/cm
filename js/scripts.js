@@ -172,9 +172,11 @@ function displayQuestion() {
         document.querySelectorAll('.answer')[i-1].style.display = 'block';
         if (questionData['Choix '+i] != undefined) {
             document.getElementById("choice"+i).innerText = questionData['Choix '+i];
+            document.getElementById('circle'+i).style.display = 'block';
             choices++;
         } else {
             document.querySelectorAll('.answer')[i-1].style.display = 'none';
+            document.getElementById('circle'+i).style.display = 'none';
         }
     }
     answer = questionData['Réponse'];
@@ -302,22 +304,78 @@ function levelUp() {
         document.getElementById('reputation').style.animation = 'rainbow 1s infinite';
     }
     getRandomQuestionListByLevel(playerData.level)
+    displayQuestion();
     assignObjects(playerData.level);
 }
 
 function assignObjects(level) {
     document.getElementById('level').style.backgroundImage = "url(\"../images/niveau" + (level) + ".png\")";
-    if (level == 2) {
+    if (level == 0) {
+        unblur("selectTable1");
+        unblur("selectChair1");
+        document.getElementById("selectTable1").style.backgroundColor = "green";
+        document.getElementById("selectChair1").style.backgroundColor = "green";
+    } else if (level == 1) {
+        document.getElementById('phone').style.display = 'flex';
+        unblur("selectPhone1");
+        unblur("selectComputer1");
+        document.getElementById("selectPhone1").style.backgroundColor = "green";
+        document.getElementById("selectComputer1").style.backgroundColor = "green";
+    } else if (level == 2) {
         document.getElementById('fakePlant').style.display = 'block';
+        unblur("selectDecoration1");
+        unblur("selectPhone2");
+        unblur("selectComputer2");
+        document.getElementById("selectDecoration1").style.backgroundColor = "green";
+        document.getElementById("selectPhone2").style.backgroundColor = "green";
+        document.getElementById("selectComputer2").style.backgroundColor = "green";
+        document.getElementById("selectPhone1").classList.remove('active');
+        document.getElementById("selectPhone1").style.backgroundColor = "grey";
+        document.getElementById("selectComputer1").classList.remove('active');
+        document.getElementById("selectComputer1").style.backgroundColor = "grey";
     } else if (level == 3) {
         document.getElementById('bigPainting').style.display = 'block';
         document.getElementById('fakePlant').style.display = 'none';
         document.getElementById('fakePlant2').style.display = 'block';
+        unblur("selectDecoration2");
+        unblur("selectDecoration3");
+        unblur("selectPhone3");
+        unblur("selectComputer3");
+        document.getElementById("selectDecoration2").style.backgroundColor = "green";
+        document.getElementById("selectDecoration3").style.backgroundColor = "green";
+        document.getElementById("selectPhone3").style.backgroundColor = "green";
+        document.getElementById("selectComputer3").style.backgroundColor = "green";
+        document.getElementById("selectPhone2").classList.remove('active');
+        document.getElementById("selectPhone2").style.backgroundColor = "grey";
+        document.getElementById("selectComputer2").classList.remove('active');
+        document.getElementById("selectComputer2").style.backgroundColor = "grey";
     } else if (level == 4) {
         document.getElementById('bigPainting').style.display = 'none';
         document.getElementById('paintingSet').style.display = 'block';
         document.getElementById('statue').style.display = 'block';
         document.getElementById('vases').style.display = 'block';
+        unblur("selectDecoration4");
+        unblur("selectDecoration5");
+        unblur("selectDecoration6");
+        unblur("selectPhone4");
+        unblur("selectComputer4");
+        unblur("selectTable2");
+        document.getElementById("selectDecoration4").style.backgroundColor = "green";
+        document.getElementById("selectDecoration5").style.backgroundColor = "green";
+        document.getElementById("selectDecoration6").style.backgroundColor = "green";
+        document.getElementById("selectPhone4").style.backgroundColor = "green";
+        document.getElementById("selectComputer4").style.backgroundColor = "green";
+        document.getElementById("selectTable2").style.backgroundColor = "green";
+        document.getElementById("selectDecoration3").classList.remove('active');
+        document.getElementById("selectDecoration3").style.backgroundColor = "grey";
+        document.getElementById("selectPhone3").classList.remove('active');
+        document.getElementById("selectPhone3").style.backgroundColor = "grey";
+        document.getElementById("selectComputer3").classList.remove('active');
+        document.getElementById("selectComputer3").style.backgroundColor = "grey";
+        document.getElementById("selectTable1").classList.remove('active');
+        document.getElementById("selectTable1").style.backgroundColor = "grey";
+        document.getElementById("certificate").style.display = "block";
+        document.getElementById("profileContract").innerText = "Expert SEO";
     }
     level -= 1;
     let plant = document.getElementById('plant');
@@ -391,3 +449,425 @@ function end() {
 document.getElementById('replayButton').addEventListener('click', function() {
     location.reload();
 })
+
+document.getElementById('catalogueButton').addEventListener('click', function() {
+    if (document.getElementById('catalogue').style.display != 'flex') {
+        document.getElementById('catalogue').style.display = 'flex';
+    } else {
+        document.getElementById('catalogue').style.display = 'none';
+    }
+})
+
+function unblur(item) {
+    document.getElementById(item).style.filter = 'blur(0px)';
+    document.getElementById(item).classList.add('unlocked');
+    document.getElementById(item).classList.add('active');
+}
+
+document.getElementById('selectChair1').addEventListener('click', function() {
+    if (document.getElementById('selectChair1').classList.contains('unlocked') && !document.getElementById('selectChair1').classList.contains('active')) {
+        document.getElementById('chair').style.display = 'flex';
+        document.getElementById('selectChair1').style.backgroundColor = 'green';
+        document.getElementById('selectChair1').classList.add('active');
+    } else if (document.getElementById('selectChair1').classList.contains('active')) {
+        document.getElementById('chair').style.display = 'none';
+        document.getElementById('selectChair1').style.backgroundColor = 'grey';
+        document.getElementById('selectChair1').classList.remove('active');
+    }
+})
+
+document.getElementById('selectPhone1').addEventListener('click', function() {
+    if (document.getElementById('selectPhone1').classList.contains('unlocked') && !document.getElementById('selectPhone1').classList.contains('active')) {
+        document.getElementById('phone').style.display = 'flex';
+        document.getElementById('selectPhone1').style.backgroundColor = 'green';
+        document.getElementById('selectPhone2').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone3').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone4').style.backgroundColor = 'grey';
+        let phone = document.getElementById('phone');
+        let phoneElements = object.phone[0];
+        phone.style.bottom = phoneElements.bottom;
+        phone.style.left = phoneElements.left;
+        phone.style.backgroundImage = phoneElements.texture;
+        phone.style.width = phoneElements.width;
+        phone.style.height = phoneElements.height;
+        document.getElementById('selectPhone1').classList.add('active');
+        document.getElementById('selectPhone2').classList.remove('active');
+        document.getElementById('selectPhone3').classList.remove('active');
+        document.getElementById('selectPhone4').classList.remove('active');
+    } else if (document.getElementById('selectPhone1').classList.contains('active')) {
+        document.getElementById('phone').style.display = 'none';
+        document.getElementById('selectPhone1').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone1').classList.remove('active');
+    }
+})
+
+document.getElementById('selectPhone2').addEventListener('click', function() {
+    if (document.getElementById('selectPhone2').classList.contains('unlocked') && !document.getElementById('selectPhone2').classList.contains('active')) {
+        document.getElementById('phone').style.display = 'flex';
+        document.getElementById('selectPhone1').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone2').style.backgroundColor = 'green';
+        document.getElementById('selectPhone3').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone4').style.backgroundColor = 'grey';
+        let phone = document.getElementById('phone');
+        let phoneElements = object.phone[1];
+        phone.style.bottom = phoneElements.bottom;
+        phone.style.left = phoneElements.left;
+        phone.style.backgroundImage = phoneElements.texture;
+        phone.style.width = phoneElements.width;
+        phone.style.height = phoneElements.height;
+        document.getElementById('selectPhone1').classList.remove('active');
+        document.getElementById('selectPhone2').classList.add('active');
+        document.getElementById('selectPhone3').classList.remove('active');
+        document.getElementById('selectPhone4').classList.remove('active');
+    } else if (document.getElementById('selectPhone2').classList.contains('active')) {
+        document.getElementById('phone').style.display = 'none';
+        document.getElementById('selectPhone2').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone2').classList.remove('active');
+    }
+})
+
+document.getElementById('selectPhone3').addEventListener('click', function() {
+    if (document.getElementById('selectPhone3').classList.contains('unlocked') && !document.getElementById('selectPhone3').classList.contains('active')) {
+        document.getElementById('phone').style.display = 'flex';
+        document.getElementById('selectPhone1').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone2').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone3').style.backgroundColor = 'green';
+        document.getElementById('selectPhone4').style.backgroundColor = 'grey';
+        let phone = document.getElementById('phone');
+        let phoneElements = object.phone[2];
+        phone.style.bottom = phoneElements.bottom;
+        phone.style.left = phoneElements.left;
+        phone.style.backgroundImage = phoneElements.texture;
+        phone.style.width = phoneElements.width;
+        phone.style.height = phoneElements.height;
+        document.getElementById('selectPhone1').classList.remove('active');
+        document.getElementById('selectPhone2').classList.remove('active');
+        document.getElementById('selectPhone3').classList.add('active');
+        document.getElementById('selectPhone4').classList.remove('active');
+    } else if (document.getElementById('selectPhone3').classList.contains('active')) {
+        document.getElementById('phone').style.display = 'none';
+        document.getElementById('selectPhone3').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone3').classList.remove('active');
+    }
+})
+
+document.getElementById('selectPhone4').addEventListener('click', function() {
+    if (document.getElementById('selectPhone4').classList.contains('unlocked') && !document.getElementById('selectPhone4').classList.contains('active')) {
+        document.getElementById('phone').style.display = 'flex';
+        document.getElementById('selectPhone1').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone2').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone3').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone4').style.backgroundColor = 'green';
+        let phone = document.getElementById('phone');
+        let phoneElements = object.phone[3];
+        phone.style.bottom = phoneElements.bottom;
+        phone.style.left = phoneElements.left;
+        phone.style.backgroundImage = phoneElements.texture;
+        phone.style.width = phoneElements.width;
+        phone.style.height = phoneElements.height;
+        document.getElementById('selectPhone1').classList.remove('active');
+        document.getElementById('selectPhone2').classList.remove('active');
+        document.getElementById('selectPhone3').classList.remove('active');
+        document.getElementById('selectPhone4').classList.add('active');
+    } else if (document.getElementById('selectPhone4').classList.contains('active')) {
+        document.getElementById('phone').style.display = 'none';
+        document.getElementById('selectPhone4').style.backgroundColor = 'grey';
+        document.getElementById('selectPhone4').classList.remove('active');
+    }
+})
+
+document.getElementById('selectComputer1').addEventListener('click', function() {
+    if (document.getElementById('selectComputer1').classList.contains('unlocked') && !document.getElementById('selectComputer1').classList.contains('active')) {
+        document.getElementById('computer').style.display = 'flex';
+        document.getElementById('selectComputer1').style.backgroundColor = 'green';
+        document.getElementById('selectComputer2').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer3').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer4').style.backgroundColor = 'grey';
+        let computer = document.getElementById('computer');
+        let computerElements = object.computer[0];
+        computer.style.bottom = computerElements.bottom;
+        computer.style.left = computerElements.left;
+        computer.style.backgroundImage = computerElements.texture;
+        computer.style.width = computerElements.width;
+        computer.style.height = computerElements.height;
+        document.getElementById('selectComputer1').classList.add('active');
+        document.getElementById('selectComputer2').classList.remove('active');
+        document.getElementById('selectComputer3').classList.remove('active');
+        document.getElementById('selectComputer4').classList.remove('active');
+    } else if (document.getElementById('selectComputer1').classList.contains('active')) {
+        document.getElementById('computer').style.display = 'none';
+        document.getElementById('selectComputer1').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer1').classList.remove('active');
+    }
+})
+
+document.getElementById('selectComputer2').addEventListener('click', function() {
+    if (document.getElementById('selectComputer2').classList.contains('unlocked') && !document.getElementById('selectComputer2').classList.contains('active')) {
+        document.getElementById('computer').style.display = 'flex';
+        document.getElementById('selectComputer1').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer2').style.backgroundColor = 'green';
+        document.getElementById('selectComputer3').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer4').style.backgroundColor = 'grey';
+        let computer = document.getElementById('computer');
+        let computerElements = object.computer[1];
+        computer.style.bottom = computerElements.bottom;
+        computer.style.left = computerElements.left;
+        computer.style.backgroundImage = computerElements.texture;
+        computer.style.width = computerElements.width;
+        computer.style.height = computerElements.height;
+        document.getElementById('selectComputer1').classList.remove('active');
+        document.getElementById('selectComputer2').classList.add('active');
+        document.getElementById('selectComputer3').classList.remove('active');
+        document.getElementById('selectComputer4').classList.remove('active');
+    } else if (document.getElementById('selectComputer2').classList.contains('active')) {
+        document.getElementById('computer').style.display = 'none';
+        document.getElementById('selectComputer2').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer2').classList.remove('active');
+    }
+})
+
+document.getElementById('selectComputer3').addEventListener('click', function() {
+    if (document.getElementById('selectComputer3').classList.contains('unlocked') && !document.getElementById('selectComputer3').classList.contains('active')) {
+        document.getElementById('computer').style.display = 'flex';
+        document.getElementById('selectComputer1').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer2').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer3').style.backgroundColor = 'green';
+        document.getElementById('selectComputer4').style.backgroundColor = 'grey';
+        let computer = document.getElementById('computer');
+        let computerElements = object.computer[2];
+        computer.style.bottom = computerElements.bottom;
+        computer.style.left = computerElements.left;
+        computer.style.backgroundImage = computerElements.texture;
+        computer.style.width = computerElements.width;
+        computer.style.height = computerElements.height;
+        document.getElementById('selectComputer1').classList.remove('active');
+        document.getElementById('selectComputer2').classList.remove('active');
+        document.getElementById('selectComputer3').classList.add('active');
+        document.getElementById('selectComputer4').classList.remove('active');
+    } else if (document.getElementById('selectComputer3').classList.contains('active')) {
+        document.getElementById('computer').style.display = 'none';
+        document.getElementById('selectComputer3').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer3').classList.remove('active');
+    }
+})
+
+document.getElementById('selectComputer4').addEventListener('click', function() {
+    if (document.getElementById('selectComputer4').classList.contains('unlocked') && !document.getElementById('selectComputer4').classList.contains('active')) {
+        document.getElementById('computer').style.display = 'flex';
+        document.getElementById('selectComputer1').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer2').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer3').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer4').style.backgroundColor = 'green';
+        let computer = document.getElementById('computer');
+        let computerElements = object.computer[3];
+        computer.style.bottom = computerElements.bottom;
+        computer.style.left = computerElements.left;
+        computer.style.backgroundImage = computerElements.texture;
+        computer.style.width = computerElements.width;
+        computer.style.height = computerElements.height;
+        document.getElementById('selectComputer1').classList.remove('active');
+        document.getElementById('selectComputer2').classList.remove('active');
+        document.getElementById('selectComputer3').classList.remove('active');
+        document.getElementById('selectComputer4').classList.add('active');
+    } else if (document.getElementById('selectComputer4').classList.contains('active')) {
+        document.getElementById('computer').style.display = 'none';
+        document.getElementById('selectComputer4').style.backgroundColor = 'grey';
+        document.getElementById('selectComputer4').classList.remove('active');
+    }
+})
+
+document.getElementById('selectTable1').addEventListener('click', function() {
+    if (document.getElementById('selectTable1').classList.contains('unlocked') && !document.getElementById('selectTable1').classList.contains('active')) {
+        document.getElementById('table').style.display = 'flex';
+        document.getElementById('selectTable1').style.backgroundColor = 'green';
+        document.getElementById('selectTable2').style.backgroundColor = 'grey';
+        let table = document.getElementById('table');
+        let tableElements = object.table[0];
+        table.style.bottom = tableElements.bottom;
+        table.style.left = tableElements.left;
+        table.style.backgroundImage = tableElements.texture;
+        table.style.width = tableElements.width;
+        table.style.height = tableElements.height;
+        document.getElementById('selectTable1').classList.add('active');
+        document.getElementById('selectTable2').classList.remove('active');
+    }
+})
+
+document.getElementById('selectTable2').addEventListener('click', function() {
+    if (document.getElementById('selectTable2').classList.contains('unlocked') && !document.getElementById('selectTable2').classList.contains('active')) {
+        document.getElementById('table').style.display = 'flex';
+        document.getElementById('selectTable1').style.backgroundColor = 'grey';
+        document.getElementById('selectTable2').style.backgroundColor = 'green';
+        let table = document.getElementById('table');
+        let tableElements = object.table[1];
+        table.style.bottom = tableElements.bottom;
+        table.style.left = tableElements.left;
+        table.style.backgroundImage = tableElements.texture;
+        table.style.width = tableElements.width;
+        table.style.height = tableElements.height;
+        document.getElementById('selectTable1').classList.remove('active');
+        document.getElementById('selectTable2').classList.add('active');
+    }
+})
+
+document.getElementById('selectDecoration1').addEventListener('click', function() {
+    if (document.getElementById('selectDecoration1').classList.contains('unlocked') && !document.getElementById('selectDecoration1').classList.contains('active')) {
+        document.getElementById('fakePlant').style.display = 'flex';
+        document.getElementById('selectDecoration1').style.backgroundColor = 'green';
+        document.getElementById('selectDecoration1').classList.add('active');
+    } else if (document.getElementById('selectDecoration1').classList.contains('active')) {
+        document.getElementById('fakePlant').style.display = 'none';
+        document.getElementById('selectDecoration1').style.backgroundColor = 'grey';
+        document.getElementById('selectDecoration1').classList.remove('active');
+    }
+})
+
+document.getElementById('selectDecoration2').addEventListener('click', function() {
+    if (document.getElementById('selectDecoration2').classList.contains('unlocked') && !document.getElementById('selectDecoration2').classList.contains('active')) {
+        document.getElementById('fakePlant2').style.display = 'flex';
+        document.getElementById('selectDecoration2').style.backgroundColor = 'green';
+        document.getElementById('selectDecoration2').classList.add('active');
+    } else if (document.getElementById('selectDecoration2').classList.contains('active')) {
+        document.getElementById('fakePlant2').style.display = 'none';
+        document.getElementById('selectDecoration2').style.backgroundColor = 'grey';
+        document.getElementById('selectDecoration2').classList.remove('active');
+    }
+})
+
+document.getElementById('selectDecoration3').addEventListener('click', function() {
+    if (document.getElementById('bigPainting').style.display != 'flex' && document.getElementById('selectDecoration3').classList.contains('unlocked')) {
+        document.getElementById('paintingSet').style.display = 'none';
+        document.getElementById('bigPainting').style.display = 'flex';
+        document.getElementById('selectDecoration3').style.backgroundColor = 'green';
+        document.getElementById('selectDecoration4').style.backgroundColor = 'grey';
+    } else {
+        document.getElementById('bigPainting').style.display = 'none';
+        document.getElementById('selectDecoration3').style.backgroundColor = 'grey';
+    }
+})
+
+document.getElementById('selectDecoration4').addEventListener('click', function() {
+    if (document.getElementById('paintingSet').style.display != 'flex' && document.getElementById('selectDecoration4').classList.contains('unlocked')) {
+        document.getElementById('bigPainting').style.display = 'none';
+        document.getElementById('paintingSet').style.display = 'flex';
+        document.getElementById('selectDecoration3').style.backgroundColor = 'grey';
+        document.getElementById('selectDecoration4').style.backgroundColor = 'green';
+    } else {
+        document.getElementById('paintingSet').style.display = 'none';
+        document.getElementById('selectDecoration4').style.backgroundColor = 'grey';
+    }
+})
+
+document.getElementById('selectDecoration5').addEventListener('click', function() {
+    if (document.getElementById('selectDecoration5').classList.contains('unlocked') && !document.getElementById('selectDecoration5').classList.contains('active')) {
+        document.getElementById('statue').style.display = 'flex';
+        document.getElementById('selectDecoration5').style.backgroundColor = 'green';
+        document.getElementById('selectDecoration5').classList.add('active');
+    } else if (document.getElementById('selectDecoration5').classList.contains('active')) {
+        document.getElementById('statue').style.display = 'none';
+        document.getElementById('selectDecoration5').style.backgroundColor = 'grey';
+        document.getElementById('selectDecoration5').classList.remove('active');
+    }
+})
+
+document.getElementById('selectDecoration6').addEventListener('click', function() {
+    if (document.getElementById('selectDecoration6').classList.contains('unlocked') && !document.getElementById('selectDecoration6').classList.contains('active')) {
+        document.getElementById('vases').style.display = 'flex';
+        document.getElementById('selectDecoration6').style.backgroundColor = 'green';
+        document.getElementById('selectDecoration6').classList.add('active');
+    } else if (document.getElementById('selectDecoration6').classList.contains('active')) {
+        document.getElementById('vases').style.display = 'none';
+        document.getElementById('selectDecoration6').style.backgroundColor = 'grey';
+        document.getElementById('selectDecoration6').classList.remove('active');
+    }
+})
+
+document.getElementById('categoryAll').addEventListener('click', function() {
+    for (let i = 0; i < document.querySelectorAll('.catalogueItem').length; i++) {
+        document.querySelectorAll('.catalogueItem')[i].style.display = 'flex';
+    }
+})
+
+document.getElementById('categoryPhone').addEventListener('click', function() {
+    for (let i = 0; i < document.querySelectorAll('.catalogueItem').length; i++) {
+        document.querySelectorAll('.catalogueItem')[i].style.display = 'none';
+    }
+    for (let i = 0; i < document.querySelectorAll('.phone').length; i++) {
+        document.querySelectorAll('.phone')[i].style.display = 'flex';
+    }
+})
+
+document.getElementById('categoryComputer').addEventListener('click', function() {
+    for (let i = 0; i < document.querySelectorAll('.catalogueItem').length; i++) {
+        document.querySelectorAll('.catalogueItem')[i].style.display = 'none';
+    }
+    for (let i = 0; i < document.querySelectorAll('.computer').length; i++) {
+        document.querySelectorAll('.computer')[i].style.display = 'flex';
+    }
+})
+
+document.getElementById('categoryTable').addEventListener('click', function() {
+    for (let i = 0; i < document.querySelectorAll('.catalogueItem').length; i++) {
+        document.querySelectorAll('.catalogueItem')[i].style.display = 'none';
+    }
+    for (let i = 0; i < document.querySelectorAll('.table').length; i++) {
+        document.querySelectorAll('.table')[i].style.display = 'flex';
+    }
+})
+
+document.getElementById('categoryChair').addEventListener('click', function() {
+    for (let i = 0; i < document.querySelectorAll('.catalogueItem').length; i++) {
+        document.querySelectorAll('.catalogueItem')[i].style.display = 'none';
+    }
+    for (let i = 0; i < document.querySelectorAll('.chair').length; i++) {
+        document.querySelectorAll('.chair')[i].style.display = 'flex';
+    }
+})
+
+document.getElementById('categoryDecorations').addEventListener('click', function() {
+    for (let i = 0; i < document.querySelectorAll('.catalogueItem').length; i++) {
+        document.querySelectorAll('.catalogueItem')[i].style.display = 'none';
+    }
+    for (let i = 0; i < document.querySelectorAll('.decoration').length; i++) {
+        document.querySelectorAll('.decoration')[i].style.display = 'flex';
+    }
+})
+
+function addReputation() {
+    playerData.reput += 20;
+    refreshPlayerData();
+}
+
+var allowedKeys = {
+    67: 'c',
+    72: 'h',
+    69: 'e',
+    65: 'a',
+    84: 't'
+  };
+  
+  var cheatCode = ['c', 'h', 'e', 'a', 't'];
+  
+  var cheatCodePosition = 0;
+  
+  document.addEventListener('keydown', function(e) {
+    var key = allowedKeys[e.keyCode];
+    var requiredKey = cheatCode[cheatCodePosition];
+  
+    if (key == requiredKey) {
+  
+      cheatCodePosition++;
+  
+      if (cheatCodePosition == cheatCode.length) {
+        activateCheats();
+        cheatCodePosition = 0;
+      }
+    } else {
+        cheatCodePosition = 0;
+    }
+  });
+  
+  function activateCheats() {
+    document.getElementById('cheatButtonLevel').style.display = 'flex';
+    document.getElementById('cheatButtonReputation').style.display = 'flex';
+  }
